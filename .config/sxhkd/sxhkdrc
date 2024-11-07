@@ -1,0 +1,30 @@
+# Screen brightness control
+super + F5
+    xrandr --output eDP-1 --brightness $(echo "$(xrandr --verbose | grep -i brightness | cut -f2 -d ' ') - 0.1" | bc)
+
+super + F6
+    xrandr --output eDP-1 --brightness $(echo "$(xrandr --verbose | grep -i brightness | cut -f2 -d ' ') + 0.1" | bc)
+
+# Audio controls
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Microphone mute toggle
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Media player controls
+XF86AudioPlay
+    playerctl play-pause
+
+XF86AudioNext
+    playerctl next
+
+XF86AudioPrev
+    playerctl previous

@@ -1,0 +1,105 @@
+#
+# Media controls
+#
+
+# Play/Pause
+XF86AudioPlay
+    playerctl play-pause
+
+# Next track
+XF86AudioNext
+    playerctl next
+
+# Previous track
+XF86AudioPrev
+    playerctl previous
+
+# Stop
+XF86AudioStop
+    playerctl stop
+
+# Raise volume
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Lower volume
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Mute audio
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Mute microphone
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+#
+# Brightness controls
+#
+
+# Increase brightness
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+# Decrease brightness
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+#
+# System controls
+#
+
+# Lock screen
+super + l
+    slock 
+
+# Sleep
+super + shift + s
+    systemctl suspend
+
+# Hibernate
+super + shift + h
+    systemctl hibernate
+
+# Reboot
+super + shift + r
+    systemctl reboot
+
+# Shutdown
+super + shift + p
+    systemctl poweroff
+
+#
+# Application launchers
+#
+
+# Terminal
+super + Return
+    alacritty
+
+# Application launcher
+super + d
+    rofi -show drun
+
+# Browser
+super + b
+    firefox
+
+# File manager
+super + e
+    thunar
+
+#
+# Screenshots
+#
+
+# Full screenshot
+Print
+    scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f ~/Pictures/Screenshots/'
+
+# Select area screenshot
+super + shift + s
+    scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f ~/Pictures/Screenshots/'
+
+#
